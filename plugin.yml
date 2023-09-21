@@ -1,0 +1,7 @@
+name: Paycraft
+description: Paycraft for PocketMine-MP
+author: dresnite
+website: "www.paycraft.gg"
+main: paycraft\Paycraft
+version: 1.0.0
+api: 5.0.0
