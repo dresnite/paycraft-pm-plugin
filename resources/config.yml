@@ -1,1 +1,6 @@
+# This token is needed to access your store
+# You can set it using /settoken <token> or updating this field
+# Find this token in your store control panel
+# Do NOT share it with anyone, or they will be able to access
+# your store.
 token: ""
