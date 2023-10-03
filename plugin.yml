@@ -5,3 +5,7 @@ website: "www.paycraft.gg"
 main: paycraft\Paycraft
 version: 1.0.0
 api: 5.0.0
+permissions:
+  paycraft.settoken:
+    description: Allows the use of the settoken command
+    default: op
