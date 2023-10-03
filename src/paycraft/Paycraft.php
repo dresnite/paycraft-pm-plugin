@@ -29,7 +29,7 @@ class Paycraft extends PluginBase {
 		$server = $this->getServer();
 		$server->getPluginManager()->registerEvents(new PaycraftListener($this), $this);
 
-		$server->getCommandMap()->register("paycraft", new SetTokenCommand());
+		$server->getCommandMap()->register("paycraft", new SetTokenCommand($this));
 
 		$this->getScheduler()->scheduleRepeatingTask(new CleanOfflineQueueTask($this), 20 * 60 * 3);
 	}
