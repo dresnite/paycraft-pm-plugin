@@ -44,7 +44,7 @@ class FetchPlayerQueueTask extends ProviderAsyncTask {
 		$logger = $paycraft->getLogger();
 
 		if(!is_array($result)) {
-			$logger->critical("Failed to run FetchPlayerQueueTask");
+			$logger->critical("Failed to run FetchPlayerQueueTask, the result wasn't valid");
 			return;
 		}
 

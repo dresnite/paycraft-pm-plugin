@@ -35,12 +35,12 @@ class FetchOfflineQueueTask extends ProviderAsyncTask {
 		$logger = $paycraft->getLogger();
 
 		if(!is_array($result)) {
-			$logger->critical("Failed to run FetchOfflineQueueTask");
+			$logger->critical("Failed to run FetchOfflineQueueTask, the result wasn't valid.");
 			return;
 		}
 
 		if(array_key_exists("error", $result)) {
-			$logger->error("Failed to fetch offline queue");
+			$logger->error("Failed to fetch offline queue, error: {$result["error"]}");
 			return;
 		}
 

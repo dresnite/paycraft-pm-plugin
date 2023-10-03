@@ -33,7 +33,7 @@ class DeleteOfflineQueueTask extends ProviderAsyncTask {
 		$logger = $this->getPaycraft()->getLogger();
 
 		if(!is_array($result)) {
-			$logger->critical("Failed to run DeleteOfflineQueueTask");
+			$logger->critical("Failed to run DeleteOfflineQueueTask, the result wasn't valid");
 			return;
 		}
 
