@@ -42,10 +42,6 @@ abstract class ProviderAsyncTask extends AsyncTask {
 			"Content-Type: application/json"
 		]);
 
-		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
-			"token" => $this->token
-		]));
-
 		$this->executeCurlHandle($ch);
 	}
 
@@ -116,10 +112,9 @@ abstract class ProviderAsyncTask extends AsyncTask {
 		$session = curl_init($url);
 
 		curl_setopt($session, CURLOPT_HTTPHEADER, [
-			"Authorization: Bearer " . $this->token,
-			...$headers
+			...$headers,
+			"Authorization: Bearer {$this->token}"
 		]);
-		curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
 		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($session, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($session, CURLOPT_TIMEOUT, 5);
