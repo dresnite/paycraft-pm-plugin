@@ -43,6 +43,11 @@ class FetchPlayerQueueTask extends ProviderAsyncTask {
 		$paycraft = $this->getPaycraft();
 		$logger = $paycraft->getLogger();
 
+		if(!is_array($result)) {
+			$logger->critical("Failed to run FetchPlayerQueueTask");
+			return;
+		}
+
 		if(!array_key_exists("queue", $result)) {
 			$error = $result["error"] ?? "Unknown";
 			$logger->error("Failed to obtain online queue for {$this->username}, error: {$error}");

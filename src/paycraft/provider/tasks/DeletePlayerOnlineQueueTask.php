@@ -39,6 +39,11 @@ class DeletePlayerOnlineQueueTask extends ProviderAsyncTask {
 
 		$logger = $this->getPaycraft()->getLogger();
 
+		if(!is_array($result)) {
+			$logger->critical("Failed to run DeletePlayerOnlineQueueTask");
+			return;
+		}
+
 		if(array_key_exists("error", $result)) {
 			$logger->error("Failed to delete player {$this->username} online queue, error: {$result["error"]}");
 			return;
