@@ -38,9 +38,7 @@ abstract class ProviderAsyncTask extends AsyncTask {
 	 * @throws Exception
 	 */
 	protected function get(string $route): void {
-		$ch = $this->getCurlSession(self::API_URL . $route, [
-			"Content-Type: application/json"
-		]);
+		$ch = $this->getCurlSession(self::API_URL . $route);
 
 		$this->executeCurlHandle($ch);
 	}

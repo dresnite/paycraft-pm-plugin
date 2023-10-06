@@ -30,7 +30,7 @@ class FetchPlayerQueueTask extends ProviderAsyncTask {
 	 * @throws Exception
 	 */
 	public function onRun(): void {
-		$this->get("/webstore/queue/online/{$this->username}");
+		$this->get("/webstore/queue/user/{$this->username}");
 	}
 
 	/**
@@ -64,10 +64,13 @@ class FetchPlayerQueueTask extends ProviderAsyncTask {
 		}
 
 		foreach($result["queue"] as $queued) {
-			$server->dispatchCommand(
-				new ConsoleCommandSender($server, $server->getLanguage()),
-				str_replace("{player}", $this->username, $queued["command"])
-			);
+			if($queued["isOnline"] ?? false) {
+				$server->dispatchCommand(
+					new ConsoleCommandSender($server, $server->getLanguage()),
+					str_replace("{player}", $this->username, $queued["command"])
+				);
+				$logger->debug("Dispatched command for {$this->username}: '{$queued["command"]}'");
+			}
 		}
 
 		$paycraft->getProvider()->deletePlayerOnlineQueue($target);
