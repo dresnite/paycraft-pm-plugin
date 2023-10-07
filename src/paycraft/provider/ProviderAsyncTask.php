@@ -111,7 +111,7 @@ abstract class ProviderAsyncTask extends AsyncTask {
 
 		curl_setopt($session, CURLOPT_HTTPHEADER, [
 			...$headers,
-			"Authorization: Bearer {$this->token}"
+			"Paycraft-Token: {$this->token}"
 		]);
 		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($session, CURLOPT_SSL_VERIFYPEER, false);
