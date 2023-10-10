@@ -23,9 +23,7 @@ class PaycraftListener implements Listener {
 	}
 
 	public function onPlayerJoin(PlayerJoinEvent $event): void {
-		if($this->paycraft->hasToken()) {
-			$this->paycraft->getProvider()->fetchPlayerQueue($event->getPlayer());
-		}
+		$this->paycraft->getProvider()->fetchPlayerQueue($event->getPlayer());
 	}
 
 }

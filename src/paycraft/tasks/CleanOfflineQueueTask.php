@@ -22,9 +22,7 @@ class CleanOfflineQueueTask extends Task {
 	}
 
 	public function onRun(): void {
-		if($this->paycraft->hasToken()) {
-			$this->paycraft->getProvider()->fetchOfflineQueue();
-		}
+		$this->paycraft->getProvider()->fetchOfflineQueue();
 	}
 
 }

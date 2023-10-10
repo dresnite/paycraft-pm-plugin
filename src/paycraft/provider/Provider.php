@@ -46,7 +46,9 @@ class Provider {
 	}
 
 	private function scheduleTask(ProviderAsyncTask $task): void {
-		$this->paycraft->getServer()->getAsyncPool()->submitTask($task);
+		if($this->paycraft->hasToken()) {
+			$this->paycraft->getServer()->getAsyncPool()->submitTask($task);
+		}
 	}
 
 }
