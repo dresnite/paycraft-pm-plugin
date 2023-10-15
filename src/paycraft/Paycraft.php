@@ -26,6 +26,10 @@ class Paycraft extends PluginBase {
 		$this->provider = new Provider($this);
 		$this->loadToken();
 
+		if($this->hasToken()) {
+			$this->getLogger()->alert("Paycraft doesn't have a token. Use the command /settoken or specify the token in the config file.");
+		}
+
 		$server = $this->getServer();
 		$server->getPluginManager()->registerEvents(new PaycraftListener($this), $this);
 
